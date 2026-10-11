@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ислам Кулназаров — разработчик, преподаватель, FabLab Naryn</title>
+<meta name="description" content="Сайты, веб-приложения, бэкенд, Python-автоматизация, UI/UX и обучение. Нарын, Кыргызстан.">
+<meta property="og:title" content="Ислам Кулназаров — портфолио">
+<meta property="og:description" content="Разработчик • Преподаватель • IT-специалист. FabLab Naryn.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Onest:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --sky-top:#3b5b9d; --sky-bot:#ffb88c; --m1:#6b7fb0; --m2:#4a5f92; --m3:#2f3f6b; --cloud:#ffe3d3; --orb:#ffd9a0;
+  --display:'Unbounded','Arial Black',system-ui,sans-serif;
+  --body:'Onest',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  --brass:#ffc861; --cyan:#8fe3f5;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:#0a1230;color:#fff;font-family:var(--body);line-height:1.6;font-size:17px;overflow-x:hidden}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--brass);outline-offset:3px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+
+/* ---------- сцена ---------- */
+.scene{position:fixed;inset:0;z-index:0;overflow:hidden;background:linear-gradient(var(--sky-top),var(--sky-bot))}
+#stars{position:absolute;inset:0;opacity:0}
+#orb{position:absolute;left:0;top:0;width:92px;height:92px;border-radius:50%;background:var(--orb);box-shadow:0 0 90px 24px var(--orb);opacity:.95;will-change:transform}
+.cl-layer{position:absolute;left:0;top:0;width:100%;will-change:transform}
+.cloud{position:absolute;left:0;animation:drift linear infinite;will-change:transform}
+.cloud i{position:absolute;display:block;background:var(--cloud);border-radius:50%}
+.cloud i.base{border-radius:999px}
+@keyframes drift{from{transform:translateX(-45vw)}to{transform:translateX(110vw)}}
+.mtn{position:absolute;left:-3%;width:106%;bottom:-1px;height:44vh;will-change:transform;display:block}
+.mtn path{transition:none}
+#m1 path{fill:var(--m1)} #m2 path{fill:var(--m2)} #m3 path{fill:var(--m3)}
+#cursor{position:fixed;left:0;top:0;width:420px;height:420px;margin:-210px 0 0 -210px;border-radius:50%;pointer-events:none;z-index:1;background:radial-gradient(circle,rgba(255,255,255,.14),transparent 65%);opacity:0;transition:opacity .4s}
+
+main,nav,footer{position:relative;z-index:2}
+
+/* ---------- стекло ---------- */
+.glass{
+  background:linear-gradient(135deg,rgba(14,26,66,.58),rgba(14,26,66,.42));
+  -webkit-backdrop-filter:blur(18px) saturate(150%);backdrop-filter:blur(18px) saturate(150%);
+  border:1px solid rgba(255,255,255,.28);
+  box-shadow:0 10px 40px rgba(5,10,40,.28),inset 0 1px 0 rgba(255,255,255,.4);
+  border-radius:24px;
+}
+.tilt{transition:transform .25s ease,border-color .25s;will-change:transform}
+.glass.tilt:hover{border-color:rgba(255,255,255,.55)}
+
+/* ---------- навигация ---------- */
+nav{position:fixed;top:14px;left:50%;transform:translateX(-50%);z-index:20;border-radius:999px;padding:6px 8px 6px 20px;display:flex;align-items:center;gap:6px;max-width:calc(100% - 20px)}
+nav .logo{font-family:var(--display);font-weight:700;font-size:14px;text-decoration:none;margin-right:10px}
+nav a.l{text-decoration:none;font-size:14.5px;padding:8px 13px;border-radius:999px;color:rgba(255,255,255,.82);transition:background .2s,color .2s}
+nav a.l:hover{background:rgba(255,255,255,.16);color:#fff}
+.lang{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.3);color:#fff;border-radius:999px;padding:7px 14px;font:600 13px var(--body);cursor:pointer;margin-left:4px}
+.lang:hover{background:rgba(255,255,255,.28)}
+@media(max-width:760px){nav a.l.hide{display:none}}
+
+/* ---------- hero ---------- */
+.hero{min-height:100vh;padding:120px 0 70px;display:flex;align-items:center}
+.hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:50px;align-items:center}
+@media(max-width:900px){.hero-grid{grid-template-columns:1fr;gap:34px}.photo-stage{order:-1}}
+.hero-card{padding:44px 44px 40px;animation:rise 1.1s .15s cubic-bezier(.2,.8,.2,1) both}
+@media(max-width:600px){.hero-card{padding:28px 22px}}
+.hi{color:var(--cyan);font-weight:500;margin-bottom:6px}
+h1{font-family:var(--display);font-weight:700;font-size:clamp(34px,6vw,62px);line-height:1.06;letter-spacing:-.02em}
+.rot-line{margin-top:16px;font-family:var(--display);font-weight:500;font-size:clamp(17px,2.3vw,24px);color:var(--brass);min-height:1.5em}
+#rot{display:inline-block;transition:opacity .35s,transform .35s}
+#rot.out{opacity:0;transform:translateY(8px)}
+.lead{margin-top:18px;color:rgba(255,255,255,.88);max-width:31em}
+.cta{margin-top:30px;display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-block;padding:13px 26px;border-radius:999px;text-decoration:none;font-weight:600;font-size:15px;transition:transform .2s,background .2s,box-shadow .2s}
+.btn.main{background:var(--brass);color:#2a1d00;box-shadow:0 8px 24px rgba(255,200,97,.35)}
+.btn.main:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(255,200,97,.5)}
+.btn.ghost{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.35)}
+.btn.ghost:hover{background:rgba(255,255,255,.26);transform:translateY(-2px)}
+
+.photo-stage{position:relative;justify-self:center;width:100%;max-width:380px;animation:rise 1.1s .45s cubic-bezier(.2,.8,.2,1) both}
+.photo{padding:12px;border-radius:32px}
+.photo .ph{aspect-ratio:4/5;border-radius:22px;overflow:hidden;background:rgba(255,255,255,.1);display:grid;place-items:center}
+.photo img{width:100%;height:100%;object-fit:cover;display:block}
+.photo .ini{font:700 72px var(--display);color:#fff}
+.badge{position:absolute;padding:9px 18px;border-radius:999px;font-weight:600;font-size:14px;white-space:nowrap;animation:bob 6s ease-in-out infinite}
+.badge.b1{left:-34px;top:12%}
+.badge.b2{right:-22px;top:42%;animation-delay:-2s}
+.badge.b3{left:-14px;bottom:10%;animation-delay:-4s}
+@media(max-width:560px){.badge.b1{left:-8px}.badge.b2{right:-8px}.badge.b3{left:-4px}}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+@keyframes rise{from{opacity:0;transform:translateY(40px);filter:blur(10px)}to{opacity:1;transform:none;filter:none}}
+.scroll-hint{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);width:26px;height:42px;border:2px solid rgba(255,255,255,.6);border-radius:14px}
+.scroll-hint::after{content:"";position:absolute;left:50%;top:8px;width:4px;height:8px;margin-left:-2px;border-radius:2px;background:#fff;animation:wheel 1.8s infinite}
+@keyframes wheel{0%{opacity:1;transform:translateY(0)}100%{opacity:0;transform:translateY(14px)}}
+.hero{position:relative}
+
+/* ---------- секции ---------- */
+section{padding:100px 0;position:relative}
+.sec-head{display:inline-block;padding:16px 30px;border-radius:20px;margin-bottom:34px}
+h2{font-family:var(--display);font-weight:500;font-size:clamp(24px,3.6vw,36px);letter-spacing:-.01em}
+.sec-head p{margin-top:6px;color:rgba(255,255,255,.82);max-width:34em;font-size:16px}
+.rv{opacity:0;transform:translateY(34px);filter:blur(6px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.8,.2,1),filter .8s ease}
+.rv.in{opacity:1;transform:none;filter:none}
+
+.about-card{padding:44px;display:grid;grid-template-columns:1.1fr .9fr;gap:40px}
+@media(max-width:860px){.about-card{grid-template-columns:1fr;padding:28px 22px}}
+.about-card p{margin-bottom:14px;color:rgba(255,255,255,.92)}
+.langs{color:rgba(255,255,255,.75);font-size:15px;margin-top:6px}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-content:start}
+.stat{padding:20px 18px;border-radius:18px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22)}
+.stat b{display:block;font:700 32px var(--display);color:var(--brass)}
+.stat span{font-size:14px;color:rgba(255,255,255,.82)}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:20px}
+.card{padding:28px}
+.card .ic{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;font-size:22px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);margin-bottom:16px}
+.card h3{font-family:var(--display);font-weight:500;font-size:16px;margin-bottom:8px}
+.card p{font-size:15.5px;color:rgba(255,255,255,.85)}
+
+.gallery{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:210px;gap:18px}
+.gallery figure:nth-child(1){grid-column:span 2;grid-row:span 2}
+@media(max-width:760px){.gallery{grid-template-columns:repeat(2,1fr);grid-auto-rows:170px}.gallery figure:nth-child(1){grid-column:span 2;grid-row:span 1}}
+.gallery figure{height:100%}
+.tile{position:relative;height:100%;overflow:hidden;padding:0}
+.tile .par{position:absolute;inset:-9% 0;width:100%;height:118%;object-fit:cover;will-change:transform}
+.tile .fb{background:
+  linear-gradient(rgba(255,255,255,.08) 1px,transparent 1px) 0 0/28px 28px,
+  linear-gradient(90deg,rgba(255,255,255,.08) 1px,transparent 1px) 0 0/28px 28px,
+  linear-gradient(140deg,rgba(143,227,245,.35),rgba(255,200,97,.28))}
+.tile figcaption{position:absolute;left:14px;right:14px;bottom:14px;padding:10px 16px;border-radius:14px;font-size:14.5px;font-weight:500}
+
+.marquee{overflow:hidden;margin:14px 0;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.track{display:flex;gap:14px;width:max-content;animation:scrollx 38s linear infinite}
+.marquee.rev .track{animation-direction:reverse;animation-duration:46s}
+.chip{padding:12px 24px;border-radius:999px;font-weight:600;font-size:15.5px;white-space:nowrap}
+@keyframes scrollx{to{transform:translateX(-50%)}}
+
+.contact-card{padding:44px;text-align:center}
+@media(max-width:600px){.contact-card{padding:28px 18px}}
+.contact-card p.big{font-family:var(--display);font-weight:500;font-size:clamp(20px,3vw,30px);max-width:20em;margin:0 auto 30px;line-height:1.3}
+.links{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;text-align:left}
+.links a{display:block;padding:18px 22px;border-radius:18px;text-decoration:none;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.26);transition:background .2s,transform .2s}
+.links a:hover{background:rgba(255,255,255,.22);transform:translateY(-3px)}
+.links small{display:block;color:rgba(255,255,255,.7);font-size:13px}
+.links span{font-weight:600;word-break:break-all}
+footer{padding:34px 0 40px;text-align:center;color:rgba(255,255,255,.75);font-size:14px;text-shadow:0 1px 8px rgba(0,0,0,.4)}
+
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important}
+  .rv{opacity:1;transform:none;filter:none;transition:none}
+  .tilt{transition:none}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<!-- ======= НЕБО, ОБЛАКА, ГОРЫ ======= -->
+<div class="scene" aria-hidden="true">
+  <canvas id="stars"></canvas>
+  <div id="orb"></div>
+  <div class="cl-layer" data-s=".05" data-k=".5" data-n="3" data-w="150,260" data-o=".5" data-d="200,320"></div>
+  <svg class="mtn" id="m1" viewBox="0 0 1440 400" preserveAspectRatio="none"><path d="M0 400V210L110 150L210 200L330 110L430 170L560 70L690 180L790 120L910 200L1030 100L1160 190L1280 130L1440 210V400Z"/></svg>
+  <div class="cl-layer" data-s=".14" data-k="1" data-n="3" data-w="220,380" data-o=".7" data-d="150,240"></div>
+  <svg class="mtn" id="m2" viewBox="0 0 1440 400" preserveAspectRatio="none" style="height:34vh"><path d="M0 400V250L140 190L260 240L400 150L520 230L660 130L800 240L930 170L1070 250L1210 160L1340 230L1440 190V400Z"/></svg>
+  <svg class="mtn" id="m3" viewBox="0 0 1440 400" preserveAspectRatio="none" style="height:24vh"><path d="M0 400V280L90 250L200 290L330 230L470 290L610 240L760 300L900 250L1050 300L1190 245L1320 290L1440 260V400Z"/></svg>
+  <div class="cl-layer" data-s=".4" data-k="2.2" data-n="2" data-w="340,540" data-o=".45" data-d="90,150"></div>
+</div>
+<div id="cursor" aria-hidden="true"></div>
+
+<nav class="glass">
+  <a class="logo" href="#top">И.К.</a>
+  <a class="l hide" href="#about" data-ru="Обо мне" data-en="About">Обо мне</a>
+  <a class="l hide" href="#services" data-ru="Услуги" data-en="Services">Услуги</a>
+  <a class="l hide" href="#gallery" data-ru="Галерея" data-en="Gallery">Галерея</a>
+  <a class="l hide" href="#stack" data-ru="Стек" data-en="Stack">Стек</a>
+  <a class="l" href="#contact" data-ru="Контакты" data-en="Contact">Контакты</a>
+  <button class="lang" id="lang" aria-label="Switch language">EN</button>
+</nav>
+
+<main>
+<header class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div class="glass hero-card">
+      <p class="hi" data-ru="Привет, я" data-en="Hi, I am">Привет, я</p>
+      <h1 data-ru="Ислам Кулназаров" data-en="Islam Kulnazarov">Ислам Кулназаров</h1>
+      <p class="rot-line"><span id="rot">Разработчик</span></p>
+      <p class="lead" data-ru="Заведую лабораторией FabLab Naryn. Делаю сайты, бэкенд и автоматизацию на Python, проектирую интерфейсы и учу этому студентов." data-en="I head the FabLab Naryn lab. I build websites, backends and Python automation, design interfaces and teach students to do the same.">Заведую лабораторией FabLab Naryn. Делаю сайты, бэкенд и автоматизацию на Python, проектирую интерфейсы и учу этому студентов.</p>
+      <div class="cta">
+        <a class="btn main" href="#contact" data-ru="Обсудить задачу" data-en="Discuss a project">Обсудить задачу</a>
+        <a class="btn ghost" href="https://github.com/islamcib" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+    <div class="photo-stage">
+      <div class="glass photo tilt"><div class="ph"><img id="photo" src="https://media.licdn.com/dms/image/v2/D4D03AQG6eWZauB-a6Q/profile-displayphoto-crop_800_800/B4DZyof3r4JkAI-/0/1772353457295?e=1793232000&v=beta&t=glerfwo7Q36aXmv5l8K4-oITGU3uNcw9jNQLDaQY5_I" alt="Ислам Кулназаров"></div></div>
+      <div class="badge glass" data-depth="1.4">FabLab Naryn</div>
+      <div class="badge glass b2" data-depth="2">Python</div>
+      <div class="badge glass b3" data-depth="1.1" data-ru="ЧПУ" data-en="CNC">ЧПУ</div>
+    </div>
+  </div>
+  <div class="scroll-hint" aria-hidden="true"></div>
+</header>
+
+<section id="about">
+  <div class="wrap">
+    <div class="sec-head glass rv"><h2 data-ru="Обо мне" data-en="About me">Обо мне</h2></div>
+    <div class="glass about-card rv">
+      <div>
+        <p data-ru="Я из Нарына, Кыргызстан. Работаю в IT 3–5 лет и параллельно преподаю: алгоритмику, программирование и UI/UX. Обучение веду по собственным методикам." data-en="I am from Naryn, Kyrgyzstan. I have worked in IT for 3–5 years and I teach algorithms, programming and UI/UX, using my own methods.">Я из Нарына, Кыргызстан. Работаю в IT 3–5 лет и параллельно преподаю: алгоритмику, программирование и UI/UX. Обучение веду по собственным методикам.</p>
+        <p data-ru="В FabLab Naryn соединяю код и производство: сделал около 10 проектов на станках с ЧПУ. Поэтому понимаю задачу не только на экране, но и в готовом изделии." data-en="At FabLab Naryn I connect code and production: I have made about 10 projects on CNC machines. So I understand a task not only on screen, but also as a finished product.">В FabLab Naryn соединяю код и производство: сделал около 10 проектов на станках с ЧПУ. Поэтому понимаю задачу не только на экране, но и в готовом изделии.</p>
+        <p class="langs" data-ru="Языки: кыргызский, русский, немецкий (базовый), английский (базовый)." data-en="Languages: Kyrgyz, Russian, German (basic), English (basic).">Языки: кыргызский, русский, немецкий (базовый), английский (базовый).</p>
+      </div>
+      <div class="stats">
+        <div class="stat"><b class="count" data-n="3,5">3–5</b><span data-ru="лет в IT" data-en="years in IT">лет в IT</span></div>
+        <div class="stat"><b class="count" data-n="2">2</b><span data-ru="года преподаю" data-en="years teaching">года преподаю</span></div>
+        <div class="stat"><b class="count" data-n="60,70">60–70</b><span data-ru="студентов" data-en="students">студентов</span></div>
+        <div class="stat"><b class="count" data-n="10" data-pre="~">~10</b><span data-ru="проектов на ЧПУ" data-en="CNC projects">проектов на ЧПУ</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="wrap">
+    <div class="sec-head glass rv"><h2 data-ru="Чем могу помочь" data-en="How I can help">Чем могу помочь</h2><p data-ru="От лендинга до серверной части." data-en="From a landing page to the server side.">От лендинга до серверной части.</p></div>
+    <div class="grid">
+      <div class="rv"><div class="glass card tilt"><div class="ic">🌐</div><h3 data-ru="Сайты и веб-приложения" data-en="Websites and web apps">Сайты и веб-приложения</h3><p data-ru="Понятные решения под вашу задачу: от визитки до сервиса." data-en="Clear solutions for your task, from a business card site to a service.">Понятные решения под вашу задачу: от визитки до сервиса.</p></div></div>
+      <div class="rv"><div class="glass card tilt"><div class="ic">⚙️</div><h3 data-ru="Бэкенд и API" data-en="Backend and API">Бэкенд и API</h3><p data-ru="Серверная логика, REST API и базы данных." data-en="Server logic, REST APIs and databases.">Серверная логика, REST API и базы данных.</p></div></div>
+      <div class="rv"><div class="glass card tilt"><div class="ic">🐍</div><h3 data-ru="Автоматизация на Python" data-en="Python automation">Автоматизация на Python</h3><p data-ru="Скрипты для повторяющихся задач, чтобы не делать их руками." data-en="Scripts for repetitive tasks, so you don't do them by hand.">Скрипты для повторяющихся задач, чтобы не делать их руками.</p></div></div>
+      <div class="rv"><div class="glass card tilt"><div class="ic">🎨</div><h3 data-ru="UI/UX" data-en="UI/UX">UI/UX</h3><p data-ru="Структура интерфейса и пользовательский опыт." data-en="Interface structure and user experience.">Структура интерфейса и пользовательский опыт.</p></div></div>
+      <div class="rv"><div class="glass card tilt"><div class="ic">🎓</div><h3 data-ru="Обучение" data-en="Teaching">Обучение</h3><p data-ru="Алгоритмика, программирование и UI/UX для студентов и команд." data-en="Algorithms, programming and UI/UX for students and teams.">Алгоритмика, программирование и UI/UX для студентов и команд.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="gallery">
+  <div class="wrap">
+    <div class="sec-head glass rv"><h2 data-ru="FabLab Naryn" data-en="FabLab Naryn">FabLab Naryn</h2><p data-ru="Лаборатория, станки с ЧПУ и занятия со студентами." data-en="The lab, CNC machines and classes with students.">Лаборатория, станки с ЧПУ и занятия со студентами.</p></div>
+    <div class="gallery">
+      <figure class="rv"><div class="glass tile tilt"><div class="par fb"></div><img class="par" src="g1.jpg" alt="" onerror="this.remove()"><figcaption class="glass" data-ru="Проекты на станках с ЧПУ" data-en="CNC machine projects">Проекты на станках с ЧПУ</figcaption></div></figure>
+      <figure class="rv"><div class="glass tile tilt"><div class="par fb"></div><img class="par" src="g2.jpg" alt="" onerror="this.remove()"><figcaption class="glass" data-ru="Занятия со студентами" data-en="Classes with students">Занятия со студентами</figcaption></div></figure>
+      <figure class="rv"><div class="glass tile tilt"><div class="par fb"></div><img class="par" src="g3.jpg" alt="" onerror="this.remove()"><figcaption class="glass" data-ru="Лаборатория" data-en="The lab">Лаборатория</figcaption></div></figure>
+      <figure class="rv"><div class="glass tile tilt"><div class="par fb"></div><img class="par" src="g4.jpg" alt="" onerror="this.remove()"><figcaption class="glass" data-ru="Разработка" data-en="Development">Разработка</figcaption></div></figure>
+    </div>
+  </div>
+</section>
+
+<section id="stack">
+  <div class="wrap">
+    <div class="sec-head glass rv"><h2 data-ru="Стек" data-en="Stack">Стек</h2></div>
+  </div>
+  <div class="marquee rv"><div class="track" data-items="Python,JavaScript,TypeScript,Go,React,Django"></div></div>
+  <div class="marquee rev rv"><div class="track" data-items="Flask,PostgreSQL,SQLite,Git,GitHub,Linux"></div></div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="glass contact-card rv">
+      <p class="big" data-ru="Есть задача для сайта, приложения, автоматизации или обучения? Напишите мне." data-en="Have a task for a website, app, automation or teaching? Write to me.">Есть задача для сайта, приложения, автоматизации или обучения? Напишите мне.</p>
+      <div class="links">
+        <a href="https://t.me/airik612" target="_blank" rel="noopener"><small>Telegram</small><span>@airik612</span></a>
+        <a href="mailto:izikivi2006@gmail.com"><small>Email</small><span>izikivi2006@gmail.com</span></a>
+        <a href="https://github.com/islamcib" target="_blank" rel="noopener"><small>GitHub</small><span>github.com/islamcib</span></a>
+        <a href="https://www.linkedin.com/in/%D0%B8%D1%81%D0%BB%D0%B0%D0%BC-%D0%BA%D1%83%D0%BB%D0%BD%D0%B0%D0%B7%D0%B0%D1%80%D0%BE%D0%B2-9031252aa/" target="_blank" rel="noopener"><small>LinkedIn</small><span>Ислам Кулназаров</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>© 2026 Ислам Кулназаров · Нарын, Кыргызстан</footer>
+
+<script>
+(function(){
+var $=function(s,c){return (c||document).querySelector(s)};
+var $$=function(s,c){return Array.prototype.slice.call((c||document).querySelectorAll(s))};
+var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+var fine=matchMedia('(pointer:fine)').matches;
+var root=document.documentElement,LANG='ru';
+
+/* ---------- фото: photo.jpg → аватар GitHub → инициалы ---------- */
+(function(){
+  var img=$('#photo'),step=0;
+  img.onerror=function(){
+    if(step===0){step=1;img.src='https://avatars.githubusercontent.com/u/144605678?s=600&v=4';}
+    else{img.remove();var d=document.createElement('div');d.className='ini';d.textContent='ИК';$('.photo .ph').appendChild(d);}
+  };
+})();
+
+/* ---------- цвета неба: рассвет → день → закат → ночь ---------- */
+function hex(h){h=h.replace('#','');return [0,2,4].map(function(i){return parseInt(h.substr(i,2),16)})}
+function lerp(a,b,t){return a+(b-a)*t}
+function mix(a,b,t){var x=hex(a),y=hex(b);return 'rgb('+x.map(function(v,i){return Math.round(lerp(v,y[i],t))}).join(',')+')'}
+var STOPS=[0,.4,.75,1];
+var PAL={
+  'sky-top':['#3b5b9d','#3f8fdc','#3a2f6b','#070d24'],
+  'sky-bot':['#ffb88c','#9bd2f2','#e0708a','#1a2a5a'],
+  'm1':['#6b7fb0','#7fa6c9','#5a4a85','#0f1a3d'],
+  'm2':['#4a5f92','#5a86ae','#3d3470','#0a1230'],
+  'm3':['#2f3f6b','#3a6389','#251f50','#060b20'],
+  'cloud':['#ffe3d3','#ffffff','#f3a9b8','#3a4a7a'],
+  'orb':['#ffd9a0','#fff4c2','#ff9a6a','#e8eefc']
+};
+var lastP=-1;
+function paint(p){
+  if(Math.abs(p-lastP)<.0004)return;lastP=p;
+  var i=0;while(i<2&&p>STOPS[i+1])i++;
+  var t=Math.min(1,Math.max(0,(p-STOPS[i])/(STOPS[i+1]-STOPS[i])));
+  for(var k in PAL)root.style.setProperty('--'+k,mix(PAL[k][i],PAL[k][i+1],t));
+}
+
+/* ---------- облака ---------- */
+function rnd(a,b){return a+Math.random()*(b-a)}
+function makeCloud(w){
+  var c=document.createElement('div');c.className='cloud';c.style.width=w+'px';c.style.height=(w*.4)+'px';c.style.filter='blur(1.4px)';
+  var parts=[[0,.30,0],[.17,.42,.05],[.40,.52,.03],[.66,.36,0],[.8,.26,0]],h='';
+  parts.forEach(function(p){var s=p[1]*w;h+='<i style="left:'+(p[0]*100)+'%;bottom:'+(p[2]*w)+'px;width:'+s+'px;height:'+s+'px"></i>'});
+  h+='<i class="base" style="left:2%;width:96%;bottom:0;height:'+(w*.2)+'px"></i>';
+  c.innerHTML=h;return c;
+}
+var layers=[];
+function buildClouds(){
+  var vh=innerHeight,max=Math.max(0,document.documentElement.scrollHeight-vh)*1.1;
+  $$('.cl-layer').forEach(function(L){
+    L.innerHTML='';
+    var s=+L.dataset.s,k=+L.dataset.k,n0=+L.dataset.n,w=L.dataset.w.split(',').map(Number),d=L.dataset.d.split(',').map(Number);
+    var H=vh+max*s+160,n=Math.round(n0*H/vh*(innerWidth<700?.6:1));
+    L.style.opacity=L.dataset.o;L.style.height=H+'px';
+    for(var i=0;i<n;i++){
+      var cl=makeCloud(rnd(w[0],w[1])),dur=rnd(d[0],d[1]);
+      cl.style.top=rnd(-40,H-60)+'px';
+      cl.style.animationDuration=dur+'s';cl.style.animationDelay=(-Math.random()*dur)+'s';
+      if(reduce){cl.style.animation='none';cl.style.left=rnd(0,innerWidth-200)+'px';}
+      L.appendChild(cl);
+    }
+    var o=layers.filter(function(x){return x.el===L})[0];
+    if(o){o.s=s;o.k=k}else layers.push({el:L,s:s,k:k});
+  });
+}
+
+/* ---------- звёзды ---------- */
+var cv=$('#stars'),cx=cv.getContext('2d');
+function drawStars(){
+  cv.width=innerWidth;cv.height=innerHeight;cx.clearRect(0,0,cv.width,cv.height);
+  var n=Math.round(innerWidth*innerHeight/6500);
+  for(var i=0;i<n;i++){
+    cx.globalAlpha=rnd(.35,1);cx.fillStyle='#fff';cx.beginPath();
+    cx.arc(Math.random()*cv.width,Math.random()*cv.height*.8,rnd(.4,1.5),0,6.283);cx.fill();
+  }
+}
+
+/* ---------- мышь ---------- */
+var tmx=0,tmy=0,mx=0,my=0,cur=$('#cursor');
+if(fine&&!reduce){
+  addEventListener('mousemove',function(e){
+    tmx=e.clientX/innerWidth-.5;tmy=e.clientY/innerHeight-.5;
+    cur.style.opacity=1;cur.style.transform='translate('+e.clientX+'px,'+e.clientY+'px)';
+  });
+  document.addEventListener('mouseleave',function(){cur.style.opacity=0});
+}
+
+/* ---------- главный цикл ---------- */
+var sy=0,cs=0,orb=$('#orb'),mt=[$('#m1'),$('#m2'),$('#m3')],mtK=[10,22,40],mtY=[30,60,95];
+var par=[],badges=$$('.badge');
+function smooth(a,b,x){var t=Math.min(1,Math.max(0,(x-a)/(b-a)));return t*t*(3-2*t)}
+function frame(){
+  cs+=(sy-cs)*.1;mx+=(tmx-mx)*.06;my+=(tmy-my)*.06;
+  var vh=innerHeight,vw=innerWidth,max=Math.max(1,document.documentElement.scrollHeight-vh),p=Math.min(1,Math.max(0,cs/max));
+  paint(p);
+  layers.forEach(function(l){l.el.style.transform='translate3d('+(mx*l.k*60)+'px,'+(-cs*l.s)+'px,0)'});
+  mt.forEach(function(m,i){m.style.transform='translate3d('+(-mx*mtK[i])+'px,'+(p*mtY[i])+'px,0)'});
+  /* солнце → луна */
+  var X,Y;
+  if(p<=.8){var a=p/.8;X=lerp(12,88,a);Y=72-58*Math.sin(Math.PI*a)}
+  else{var b=(p-.8)/.2;X=lerp(88,70,b);Y=lerp(72,26,b)}
+  orb.style.transform='translate3d('+(X*vw/100-46+mx*-30)+'px,'+(Y*vh/100-46)+'px,0)';
+  cv.style.opacity=smooth(.6,.92,p);
+  badges.forEach(function(b){var d=+b.dataset.depth;b.style.translate=(mx*d*26)+'px '+(my*d*20)+'px'});
+  par.forEach(function(e){
+    var r=e.parentNode.getBoundingClientRect();
+    if(r.bottom<-50||r.top>vh+50)return;
+    e.style.transform='translateY('+(((r.top+r.height/2)/vh-.5)*-34)+'px)';
+  });
+  requestAnimationFrame(frame);
+}
+addEventListener('scroll',function(){sy=window.scrollY||document.documentElement.scrollTop},{passive:true});
+
+/* ---------- 3D-наклон карточек ---------- */
+if(fine&&!reduce){
+  $$('.tilt').forEach(function(el){
+    el.addEventListener('mousemove',function(e){
+      var r=el.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
+      el.style.transform='perspective(900px) rotateY('+(x*11)+'deg) rotateX('+(-y*11)+'deg)';
+    });
+    el.addEventListener('mouseleave',function(){el.style.transform=''});
+  });
+}
+
+/* ---------- появление, счётчики ---------- */
+function runCount(el){
+  var nums=el.dataset.n.split(',').map(Number),pre=el.dataset.pre||'',t0=null,D=1400;
+  function tick(ts){
+    if(!t0)t0=ts;var k=Math.min((ts-t0)/D,1),e=1-Math.pow(1-k,3);
+    el.textContent=pre+nums.map(function(n){return Math.round(n*e)}).join('–');
+    if(k<1)requestAnimationFrame(tick);
+  }
+  if(reduce){return}requestAnimationFrame(tick);
+}
+var io=('IntersectionObserver' in window)?new IntersectionObserver(function(es){
+  es.forEach(function(e){
+    if(!e.isIntersecting)return;
+    e.target.classList.add('in');
+    $$('.count',e.target).forEach(runCount);
+    io.unobserve(e.target);
+  });
+},{threshold:.15}):null;
+$$('.rv').forEach(function(el,i){
+  if(!io){el.classList.add('in');return;}
+  el.style.transitionDelay=(i%3)*80+'ms';io.observe(el);
+});
+
+/* ---------- бегущая строка стека ---------- */
+$$('.track').forEach(function(t){
+  var items=t.dataset.items.split(','),h='';
+  for(var r=0;r<4;r++)items.forEach(function(x){h+='<span class="chip glass">'+x+'</span>'});
+  t.innerHTML=h;
+});
+
+/* ---------- меняющееся слово ---------- */
+var WORDS={ru:['Разработчик','Преподаватель','IT-специалист'],en:['Developer','Teacher','IT specialist']};
+var wi=0,rot=$('#rot');
+if(!reduce)setInterval(function(){
+  rot.classList.add('out');
+  setTimeout(function(){wi=(wi+1)%3;rot.textContent=WORDS[LANG][wi];rot.classList.remove('out')},360);
+},2400);
+
+/* ---------- RU / EN ---------- */
+$('#lang').onclick=function(){
+  LANG=LANG==='ru'?'en':'ru';root.lang=LANG;
+  $$('[data-ru]').forEach(function(el){el.innerHTML=el.getAttribute('data-'+LANG)});
+  this.textContent=LANG==='ru'?'EN':'RU';
+  rot.textContent=WORDS[LANG][wi];
+};
+
+/* ---------- запуск ---------- */
+function init(){
+  par=$$('.par');
+  buildClouds();drawStars();
+  sy=cs=window.scrollY||0;
+  requestAnimationFrame(frame);
+}
+if(document.readyState==='complete')init();else addEventListener('load',init);
+var rt;addEventListener('resize',function(){clearTimeout(rt);rt=setTimeout(function(){buildClouds();drawStars()},250)});
+})();
+</script>
+</body>
+</html>
